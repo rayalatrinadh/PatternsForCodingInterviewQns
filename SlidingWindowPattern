@@ -1,0 +1,24 @@
+package com.trinadh.codingPatterns;
+
+import java.util.Scanner;
+
+public class SlidingWindowArray {
+    public static void main(String args[]){
+        Scanner input = new Scanner(System.in);
+        int[] arr = {1,2,3,4,5,6,7,8,9};
+        System.out.println("please enter sub array Size should be <:" + arr.length);
+        int subArraySize = input.nextInt();
+        subArraySize -= 1;
+        int sum = 0;
+        for(int i = 0; i < arr.length - subArraySize; i++){
+            int localSum = 0;
+            int count = i-1;
+            while(count++ < i+subArraySize){
+                localSum = localSum + arr[count];
+            }
+            if(localSum > sum)
+                sum = localSum;
+        }
+        System.out.println(sum);
+    }
+}
